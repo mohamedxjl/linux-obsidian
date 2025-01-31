@@ -1,0 +1,7 @@
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-<kernel_release>-<localversion>"
+
+PRESETS=('default' 'fallback')
+
+default_image="/boot/initramfs-<kernel_release>-<localversion>.img"
+fallback_options="-S autodetect"
