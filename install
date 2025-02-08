@@ -15,9 +15,9 @@ reset=$(tput sgr0)
 cores=$(nproc)
 version=6
 patchlevel=13
-# sublevel=0
+sublevel=2
 subname='obsidian'
-vtb=$version.$patchlevel
+vtb=$version.$patchlevel.$sublevel
 
 # Building
 exec build

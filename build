@@ -17,22 +17,22 @@ reset=$(tput sgr0)
 cores=$(nproc)
 version=6
 patchlevel=13
-# sublevel=0
+sublevel=2
 subname='obsidian'
-vtb=$version.$patchlevel
-#source=https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$version.$patchlevel.$sublevel.tar.xz
+vtb=$version.$patchlevel.$sublevel
+source=https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$version.$patchlevel.$sublevel.tar.xz
 
-source=https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$version.$patchlevel.tar.xz
+#source=https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$version.$patchlevel.tar.xz
 
 mkdir src
 cd src
 wget $source
 
-#tar xvf linux-$version.$patchlevel.$sublevel.tar.xz
-tar xvf linux-$version.$patchlevel.tar.xz
+tar xvf linux-$version.$patchlevel.$sublevel.tar.xz
+#tar xvf linux-$version.$patchlevel.tar.xz
 
 # Configuration
-cp config/.config linux-$version.$patchlevel/
+cp config/.config linux-$version.$patchlevel.$sublevel/
 
 # Cores
 printf "[$green*$reset] Cores used to build?(max =$red $cores$reset):"

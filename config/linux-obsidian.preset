@@ -1,7 +1,7 @@
 ALL_config="/etc/mkinitcpio.conf"
-ALL_kver="/boot/vmlinuz-<kernel_release>-<localversion>"
+ALL_kver="/boot/vmlinuz-6.13.2-obsidian"
 
 PRESETS=('default' 'fallback')
 
-default_image="/boot/initramfs-<kernel_release>-<localversion>.img"
+default_image="/boot/initramfs-6.13.2-obsidian.img"
 fallback_options="-S autodetect"
