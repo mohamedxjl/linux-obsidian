@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# variables
+# colors
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+yellow=$(tput setaf 3)
+blue=$(tput setaf 4)
+magneta=$(tput setaf 5)
+cyan=$(tput setaf 6)
+white=$(tput setaf 7)
+reset=$(tput sgr0)
+
+# Varibales
+cores=$(nproc)
+version=6
+patchlevel=13
+sublevel=5
+subname='obsidian'
+vtb=$version.$patchlevel.$sublevel
+
+# Building
+exec build
+make bzImage
+
+# Installation
+sudo make modules_install
+sudo install -Dm644 "$(make -s bzImage)" /boot/vmlinuz-$vtb-$subname
+sudo cp -vf System.map /boot/System.map-$vtb-$subname
+sudo cp -vf .config /boot/config-$vtb-$subname
+sudo cp config/linux-obsidian.preset /etc/mkinitcpio.d/linux-$subname.preset
+sudo mkinitcpio -p linux-$subname
+
+# updating grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
